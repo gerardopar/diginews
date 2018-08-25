@@ -1,6 +1,10 @@
 //header colors
 $matte-black: rgb(26, 26, 26);
 
+.header{
+    position: relative;
+}
+
 .header__title--wrap{
     align-items: center;
     background-color: $matte-black;

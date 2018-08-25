@@ -19,9 +19,7 @@ class HeaderNav extends React.Component {
         this.setState( () => ({
             hidden: !this.state.hidden
         }));
-
     }   
-
 
     render(){
 
@@ -31,22 +29,13 @@ class HeaderNav extends React.Component {
             {/*mobile navigation*/}
 
             {this.state.hidden ? 
-            
-                <div className="header__nav--mobile--wrap">
-                <button className="header__btn--close" onClick={this.showMenu}><img className="header__btn--icon" src={button} alt="button"/></button>
-                <nav className="header__nav--mobile">
-                    <NavLink to="/" className="header__item--mobile" activeClassName="is-active" exact={true}>BREAKING NEWS</NavLink>
-                    <NavLink to="/crypto" className="header__item--mobile" activeClassName="is-active">CRYPTOCURRENCY</NavLink>
-                    <NavLink to="/life" className="header__item--mobile" activeClassName="is-active">LIFE</NavLink>
-                    <NavLink to="/sports" className="header__item--mobile" activeClassName="is-active">SPORTS</NavLink>
-                    <NavLink to="/tech" className="header__item--mobile" activeClassName="is-active">TECH</NavLink>
-                 </nav>
-            </div> : <button className="header__btn" onClick={this.showMenu}><img className="header__btn--icon" src={button} alt="button"/></button>
+               <HeaderNavMobile showMenu={this.showMenu}/> : 
+                    <button className="header__btn" onClick={this.showMenu}>
+                        <img className="header__btn--icon" src={button} alt="button"/>
+                    </button>
             
             }
-
             
-
             {/*navigation*/}
             <nav className="header__nav">
                 <NavLink to="/" className="header__item" activeClassName="is-active" exact={true}>BREAKING NEWS</NavLink>
@@ -59,6 +48,21 @@ class HeaderNav extends React.Component {
         </div>
     );
     }
+};
+
+const HeaderNavMobile = (props) => {
+    return (
+    <div className="header__nav--mobile--wrap">
+        <button className="header__btn--close" onClick={props.showMenu}><img className="header__btn--icon" src={button} alt="button"/></button>
+            <nav className="header__nav--mobile">
+                <NavLink to="/" className="header__item--mobile" activeClassName="is-active" exact={true}>BREAKING NEWS</NavLink>
+                <NavLink to="/crypto" className="header__item--mobile" activeClassName="is-active">CRYPTOCURRENCY</NavLink>
+                <NavLink to="/life" className="header__item--mobile" activeClassName="is-active">LIFE</NavLink>
+                <NavLink to="/sports" className="header__item--mobile" activeClassName="is-active">SPORTS</NavLink>
+                <NavLink to="/tech" className="header__item--mobile" activeClassName="is-active">TECH</NavLink>
+            </nav>
+        </div> 
+    );
 };
 
 export default HeaderNav;
