@@ -1,0 +1,66 @@
+.footer{
+    align-items: center;
+    background-color: $off-black;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    justify-content: space-around;
+    text-align: center;
+    width: 100%;
+}
+
+.footer__title{
+    color: whitesmoke;
+}
+
+.footer__link{
+    color: rgb(201, 201, 201);
+}
+
+.footer__link:hover{
+    color: whitesmoke;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) and (orientation: Portrait) {
+    .footer{
+        flex-direction: column;
+        height: 15vh;
+        justify-content: center;
+    }
+
+    .footer__title{
+        padding-bottom: 6px;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) and (orientation: Portrait) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) and (orientation: Portrait) {
+
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) and (orientation: Landscape) {
+    .footer{
+        height: 15vh;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) and (orientation: Landscape) {
+    .footer{
+        height: 15vh;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) and (orientation: Landscape) {
+    .footer{
+        height: 15vh;
+    }
+}
