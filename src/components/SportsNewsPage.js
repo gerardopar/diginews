@@ -76,7 +76,7 @@ class SportsNewsPage extends React.Component {
             }));
     
         } else {
-            throw new Error('unable to fetch breaking news');
+            throw new Error('unable to fetch Sports news');
         }
     }
     
