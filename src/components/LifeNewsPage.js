@@ -66,11 +66,11 @@ class LifeNewsPage extends React.Component {
                 articleUrlSThree: data.articles[3].url,
                 articleImageSThree: data.articles[3].urlToImage,
 
-                articleDescriptionXSOne: data.articles[3].title,
+                articleDescriptionXSOne: data.articles[4].title,
                 articleUrlXSOne: data.articles[4].url,
                 articleImageXSOne: data.articles[4].urlToImage,
 
-                articleDescriptionXSTwo: data.articles[3].title,
+                articleDescriptionXSTwo: data.articles[5].title,
                 articleUrlXSTwo: data.articles[5].url,
                 articleImageXSTwo: data.articles[5].urlToImage
             }));

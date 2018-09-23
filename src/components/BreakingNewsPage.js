@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 //importing breaking news articles
 import ArticleLarge from './ArticleLarge';
@@ -17,6 +18,7 @@ class BreakingNewsPage extends React.Component {
             articleImageLarge: '',
             articleUrlLarge: '',
             articleTitleLarge: '',
+            articleLargePublished: '',  
                 //small article--one
             articleDescriptionSOne: '',
             articleImageSOne: '',
@@ -53,6 +55,8 @@ class BreakingNewsPage extends React.Component {
                 articleUrlLarge: data.articles[0].url,
                 articleImageLarge: data.articles[0].urlToImage,
                 articleTitleLarge: data.articles[0].title,
+                articleLargePublished: moment(data.articles[0].publishedAt).format('MMM Do YYYY, h:mm:ss a'), 
+
 
                 articleTitleSOne: data.articles[1].title,
                 articleUrlSOne: data.articles[1].url,
@@ -91,7 +95,8 @@ class BreakingNewsPage extends React.Component {
                     articleDescription={this.state.articleDescriptionLarge} 
                     articleImage={this.state.articleImageLarge}
                     articleUrl={this.state.articleUrlLarge}
-                    articleTitle={this.state.articleTitleLarge}/>}
+                    articleTitle={this.state.articleTitleLarge}
+                    articlePublishedAt={this.state.articleLargePublished}/>}
                     
                     {/*smaller article*/}
                     <div className="page__box--two">

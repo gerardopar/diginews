@@ -31,6 +31,7 @@
     flex-direction: column;
     margin: 5px;
     padding: 10px;
+    position: relative;
     text-decoration: none;
     transition: all 1s ease;
 }
@@ -103,6 +104,29 @@
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) and (orientation: Portrait) {
+    .page__article--wrap{
+        background-color: rgb(219, 219, 219);
+        display: flex;
+        flex-direction: column;
+        height: 120vh;
+        width: 100%;
+    }
+    
+    .page__article--wrap--two{
+        background-color: rgb(219, 219, 219);
+        display: flex;
+        flex-direction: column;
+        height: 50vh;
+        width: 100%;
+    }
+
+    .page__box--one{
+        flex: 1;
+    }
+    .page__box--two{
+        flex: 2;
+    }
+
     .page__article--title{
         font-size: 1.4rem;
     }
