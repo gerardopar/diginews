@@ -29,7 +29,7 @@ class HeaderNav extends React.Component {
             {/*mobile navigation*/}
 
             {this.state.hidden ? 
-               <HeaderNavMobile showMenu={this.showMenu}/> : 
+            <HeaderNavMobile showMenu={this.showMenu}/> : 
                     <button className="header__btn" onClick={this.showMenu}>
                         <img className="header__btn--icon" src={button} alt="button"/>
                     </button>
@@ -37,13 +37,13 @@ class HeaderNav extends React.Component {
             }
             
             {/*navigation*/}
-            <nav className="header__nav">
+            <div className="header__nav">
                 <NavLink to="/" className="header__item" activeClassName="is-active" exact={true}>BREAKING NEWS</NavLink>
                 <NavLink to="/crypto" className="header__item" activeClassName="is-active">CRYPTOCURRENCY</NavLink>
                 <NavLink to="/life" className="header__item" activeClassName="is-active">LIFE</NavLink>
                 <NavLink to="/sports" className="header__item" activeClassName="is-active">SPORTS</NavLink>
                 <NavLink to="/tech" className="header__item" activeClassName="is-active">TECH</NavLink>
-            </nav>
+            </div>
 
         </div>
     );
@@ -54,13 +54,13 @@ const HeaderNavMobile = (props) => {
     return (
     <div className="header__nav--mobile--wrap">
         <button className="header__btn--close" onClick={props.showMenu}><img className="header__btn--icon" src={button} alt="button"/></button>
-            <nav className="header__nav--mobile">
+            <div className="header__nav--mobile">
                 <NavLink to="/" className="header__item--mobile" activeClassName="is-active" exact={true}>BREAKING NEWS</NavLink>
                 <NavLink to="/crypto" className="header__item--mobile" activeClassName="is-active">CRYPTOCURRENCY</NavLink>
                 <NavLink to="/life" className="header__item--mobile" activeClassName="is-active">LIFE</NavLink>
                 <NavLink to="/sports" className="header__item--mobile" activeClassName="is-active">SPORTS</NavLink>
                 <NavLink to="/tech" className="header__item--mobile" activeClassName="is-active">TECH</NavLink>
-            </nav>
+            </div>
         </div> 
     );
 };

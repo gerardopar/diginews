@@ -1,10 +1,10 @@
 import React from 'react';
+import moment from 'moment';
 
 //importing breaking news articles
 import ArticleLarge from './ArticleLarge';
 import ArticleSmall from './ArticleSmall';
 import ArticleXSmall from './ArticleXSmall';
-
 
 class CryptoNewsPage extends React.Component {
 
@@ -12,31 +12,9 @@ class CryptoNewsPage extends React.Component {
         super(props);
 
         this.state = {
-                //large article
-            articleDescriptionLarge: '',
-            articleImageLarge: '',
-            articleUrlLarge: '',
-            articleTitleLarge: '',
-                //small article--one
-            articleDescriptionSOne: '',
-            articleImageSOne: '',
-            articleUrlSOne: '',
-                //small article--two
-            articleDescriptionSTwo: '',
-            articleImageSTwo: '',
-            articleUrlSTwo: '',
-                //small article--three
-            articleDescriptionSThree: '',
-            articleImageSThree: '',
-            articleUrlSThree: '',
-                //xsmall article--one
-            articleDescriptionXSOne: '',
-            articleImageXSOne: '',
-            articleUrlXSOne: '',
-                //xsmall article--two
-            articleDescriptionXSTwo: '',
-            articleImageXSTwo: '',
-            articleUrlXSTwo: '',
+            largeArticles: [],
+            smallArticles: [],
+            xsmallArticles: []
         };
     }
 
@@ -48,35 +26,58 @@ class CryptoNewsPage extends React.Component {
         if(response.status === 200){
             const data = await response.json();
 
+            // large article
+            const large_article = {
+                articleDescription: data.articles[0].description,
+                articleUrl: data.articles[0].url,
+                articleImage: data.articles[0].urlToImage,
+                articleTitle: data.articles[0].title,
+                articlePublished: moment(data.articles[0].publishedAt).format('MMM Do YYYY, h:mm:ss a')
+            }
+
+            // small articles
+            const small_article1 = {
+                articleTitle: data.articles[1].title,
+                articleUrl: data.articles[1].url,
+                articleImage: data.articles[1].urlToImage,
+                id: 1
+            }
+            const small_article2 = {
+                articleTitle: data.articles[2].title,
+                articleUrl: data.articles[2].url,
+                articleImage: data.articles[2].urlToImage,
+                id: 2
+            }
+            const small_article3 = {
+                articleTitle: data.articles[3].title,
+                articleUrl: data.articles[3].url,
+                articleImage: data.articles[3].urlToImage,
+                id: 3
+            }
+
+            // xsmall articles
+            const xsmall_article1 = {
+                articleDescription: data.articles[4].description,
+                articleUrl: data.articles[4].url,
+                articleImage: data.articles[4].urlToImage,
+                id: 1
+            }
+
+            const xsmall_article2 = {
+                articleDescription: data.articles[5].description,
+                articleUrl: data.articles[5].url,
+                articleImage: data.articles[5].urlToImage,
+                id: 2
+            }
+
             this.setState(() => ({
-                articleDescriptionLarge: data.articles[0].description,
-                articleUrlLarge: data.articles[0].url,
-                articleImageLarge: data.articles[0].urlToImage,
-                articleTitleLarge: data.articles[0].title,
-
-                articleTitleSOne: data.articles[1].title,
-                articleUrlSOne: data.articles[1].url,
-                articleImageSOne: data.articles[1].urlToImage,
-
-                articleTitleSTwo: data.articles[2].title,
-                articleUrlSTwo: data.articles[2].url,
-                articleImageSTwo: data.articles[2].urlToImage,
-
-                articleTitleSThree: data.articles[3].title,
-                articleUrlSThree: data.articles[3].url,
-                articleImageSThree: data.articles[3].urlToImage,
-
-                articleDescriptionXSOne: data.articles[4].description,
-                articleUrlXSOne: data.articles[4].url,
-                articleImageXSOne: data.articles[4].urlToImage,
-
-                articleDescriptionXSTwo: data.articles[5].description,
-                articleUrlXSTwo: data.articles[5].url,
-                articleImageXSTwo: data.articles[5].urlToImage
+                largeArticles: this.state.largeArticles.concat(large_article),
+                smallArticles: this.state.smallArticles.concat(small_article1, small_article2, small_article3),
+                xsmallArticles: this.state.xsmallArticles.concat(xsmall_article1, xsmall_article2)
             }));
     
         } else {
-            throw new Error('unable to fetch crypto news');
+            throw new Error('unable to fetch breaking news');
         }
     }
     
@@ -84,49 +85,38 @@ class CryptoNewsPage extends React.Component {
         return(
             <div>
                 <div className="page__article--wrap">
-                    {/* breaking news articles will be rendered below */}
+                    {/* crypto news articles will be rendered below */}
                     {/*large article*/}
-                    
-                    {<ArticleLarge 
-                    articleDescription={this.state.articleDescriptionLarge} 
-                    articleImage={this.state.articleImageLarge}
-                    articleUrl={this.state.articleUrlLarge}
-                    articleTitle={this.state.articleTitleLarge}/>}
-                    
-                    {/*smaller article*/}
-                    <div className="page__box--two">
-
-                    {<ArticleSmall 
-                    articleTitle={this.state.articleTitleSOne} 
-                    articleImage={this.state.articleImageSOne}
-                    articleUrl={this.state.articleUrlSOne}/>}
-
-                    {<ArticleSmall 
-                    articleTitle={this.state.articleTitleSTwo} 
-                    articleImage={this.state.articleImageSTwo}
-                    articleUrl={this.state.articleUrlSTwo}/>}
-                    
-                    {<ArticleSmall 
-                    articleTitle={this.state.articleTitleSThree} 
-                    articleImage={this.state.articleImageSThree}
-                    articleUrl={this.state.articleUrlSThree}/>}
-
-                    </div>
-
+                    {
+                        this.state.largeArticles.map((article) => {
+                            return(<ArticleLarge
+                                key={article} 
+                                {...article}
+                                />);
+                        })
+                    }
+                    {/*smaller articles*/}
+                <div className="page__box--two">
+                    {
+                        this.state.smallArticles.map((article) => {
+                            return(<ArticleSmall
+                                key={article.id} 
+                                {...article}
+                                />);
+                        })
+                    }
                 </div>
-
+                </div>
+                    {/*xsmaller article*/}
                 <div className="page__article--wrap--two">
-                    
-                    {<ArticleXSmall 
-                    articleDescription={this.state.articleDescriptionXSOne} 
-                    articleImage={this.state.articleImageXSOne}
-                    articleUrl={this.state.articleUrlXSOne}/>}
-            
-                    {<ArticleXSmall
-                    articleDescription={this.state.articleDescriptionXSTwo}
-                    articleImage={this.state.articleImageXSTwo}
-                    articleUrl={this.state.articleUrlXSTwo}/>}
-                
+                    {
+                        this.state.xsmallArticles.map((article) => {
+                            return(<ArticleXSmall
+                                key={article.id} 
+                                {...article}
+                                />);
+                        })
+                    }
                 </div>
             </div>
         )

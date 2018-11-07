@@ -32,5 +32,3 @@ const AppRouter = () => (
 
 //exporting compenent
 export default AppRouter;
-
-// <Route component={PageNotFound} />
