@@ -11,8 +11,6 @@ import LifeNewsPage from '../components/LifeNewsPage';
 import SportsNewsPage from '../components/SportsNewsPage';
 import TechNewsPage from '../components/TechNewsPage';
 
-// import PageNotFound from '../components/PageNotFound';
-
 //AppRouter component
 const AppRouter = () => (
     <BrowserRouter>
