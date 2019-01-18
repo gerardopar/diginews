@@ -1,12 +1,21 @@
 .footer{
     align-items: center;
-    background-color: $off-black;
+    background-color: rgb(250, 81, 137);
     display: flex;
     flex-direction: row;
-    height: 10vh;
+    height: 15vh;
     justify-content: space-around;
     text-align: center;
     width: 100%;
+}
+
+.footer__img--wrap{
+    display: none;
+}
+
+.footer__img{
+    height: 30px;
+    width: 30px;
 }
 
 .footer__title{
@@ -14,19 +23,24 @@
 }
 
 .footer__link{
-    color: rgb(201, 201, 201);
+    color: black;
 }
 
 .footer__link:hover{
-    color: whitesmoke;
+    color: rgb(37, 37, 37);
+    border-bottom: solid 1px black;
 }
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) and (orientation: Portrait) {
     .footer{
         flex-direction: column;
-        height: 15vh;
+        height: 25vh;
         justify-content: center;
+    }
+
+    .footer__img--wrap{
+        display: block;
     }
 
     .footer__title{
