@@ -11,6 +11,7 @@ class CryptoNewsPage extends React.Component {
 
     constructor(props){
         super(props);
+
     }
 
     async componentDidMount(){
