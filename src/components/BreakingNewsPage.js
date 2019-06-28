@@ -13,7 +13,7 @@ class BreakingNewsPage extends Component {
         super(props);
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         this.props.setBreakingNewsAsync();
     }
     
