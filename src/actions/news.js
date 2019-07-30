@@ -7,6 +7,7 @@ export const setBreakingNewsAsync = () => { // async logic
             return data.json();
         })
         .then((news) => {
+            console.log('breaking news', news);
             dispatch(setBreakingNews(news.articles)); 
         })
         .catch((err) => console.log(err));
@@ -26,9 +27,11 @@ export const setCryptoNewsAsync = () => { // async logic
             method: 'GET'
         })
         .then((data) => {
+            
             return data.json();
         })
         .then((news) => {
+            console.log('crypto news', news);
             dispatch(setCryptoNews(news.articles)); 
         })
         .catch((err) => console.log(err));
