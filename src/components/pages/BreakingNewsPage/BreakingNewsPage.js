@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setBreakingNewsAsync } from '../actions/news';
+import { setBreakingNewsAsync } from '../../../actions/news';
 //importing breaking news articles
-import Spinner from './Spinner';
-import ArticleLarge from './ArticleLarge';
-import ArticleSmall from './ArticleSmall';
-import ArticleXSmall from './ArticleXSmall';
+import Spinner from '../../UI/Spinner/Spinner';
+import ArticleLarge from '../../UI/Articles/ArticleLarge';
+import ArticleSmall from '../../UI/Articles/ArticleSmall';
+import ArticleXSmall from '../../UI/Articles/ArticleXSmall';
 
 class BreakingNewsPage extends Component {
 

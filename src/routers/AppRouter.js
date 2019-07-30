@@ -3,20 +3,19 @@ import React, { Component } from 'react';
 //importing react-router-dom
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 //import components here
-import Header from '../components/Header';
-import SubHeader from '../components/SubHeader';
-import Footer from '../components/Footer';
-import BreakingNewsPage from '../components/BreakingNewsPage';
-import CryptoNewsPage from '../components/CryptoNewsPage';
-import LifeNewsPage from '../components/LifeNewsPage';
-import SportsNewsPage from '../components/SportsNewsPage';
-import TechNewsPage from '../components/TechNewsPage';
+import Header from '../components/UI/Header/Header';
+import SubHeader from '../components/UI/Header/SubHeader';
+import Footer from '../components/UI/Footer/Footer';
+import BreakingNewsPage from '../components/pages/BreakingNewsPage/BreakingNewsPage';
+import CryptoNewsPage from '../components/pages/CryptoNewsPage/CryptoNewsPage';
+import LifeNewsPage from '../components/pages/LifeNewsPage/LifeNewsPage';
+import SportsNewsPage from '../components/pages/SportsNewsPage/SportsNewsPage';
+import TechNewsPage from '../components/pages/TechNewsPage/TechNewsPage';
 
 //AppRouter component
 class AppRouter extends Component {
     constructor(props){
         super(props);
-
     }
 
     render(){

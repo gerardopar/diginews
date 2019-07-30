@@ -1,35 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCryptoNewsAsync } from '../actions/news';
+import { setSportsNewsAsync } from '../../../actions/news';
 
 //importing breaking news articles
-import Spinner from './Spinner';
-import ArticleLarge from './ArticleLarge';
-import ArticleSmall from './ArticleSmall';
-import ArticleXSmall from './ArticleXSmall';
+import Spinner from '../../UI/Spinner/Spinner';
+import ArticleLarge from '../../UI/Articles/ArticleLarge';
+import ArticleSmall from '../../UI/Articles/ArticleSmall';
+import ArticleXSmall from '../../UI/Articles/ArticleXSmall';
 
-class CryptoNewsPage extends React.Component {
+class SportsNewsPage extends React.Component {
 
     constructor(props){
         super(props);
-
     }
 
     async componentDidMount(){
-        this.props.setCryptoNewsAsync();
+        this.props.setSportsNewsAsync();
     }
     
     render(){
         return(
         <React.Fragment>
             {
-                this.props.news.cryptoNews.length !== 0 
+                this.props.news.sportsNews.length !== 0
                     ? <div>
                     <div className="page__article--wrap">
                         {/* breaking news articles will be rendered below */}
                         {/*large article*/}
                         {
-                            this.props.news.cryptoNews.splice(0, 1).map((article, index) => {
+                            this.props.news.sportsNews.splice(0, 1).map((article, index) => {
                                 return(<ArticleLarge
                                     key={index} 
                                     {...article}
@@ -39,7 +38,7 @@ class CryptoNewsPage extends React.Component {
                         {/*smaller articles*/}
                     <div className="page__box--two">
                         {
-                            this.props.news.cryptoNews.splice(0, 3).map((article, index) => {
+                            this.props.news.sportsNews.splice(0, 3).map((article, index) => {
                                 return(<ArticleSmall
                                     key={index} 
                                     {...article}
@@ -51,7 +50,7 @@ class CryptoNewsPage extends React.Component {
                         {/*xsmaller article*/}
                     <div className="page__article--wrap--two">
                         {
-                            this.props.news.cryptoNews.splice(0, 2).map((article, index) => {
+                            this.props.news.sportsNews.splice(0, 2).map((article, index) => {
                                 return(<ArticleXSmall
                                     key={index} 
                                     {...article}
@@ -59,8 +58,7 @@ class CryptoNewsPage extends React.Component {
                             })
                         }
                     </div>
-                </div>
-                : <Spinner />
+                </div> : <Spinner />
             }
             
         </React.Fragment>
@@ -78,9 +76,9 @@ const mapStateToProps = (state) => {
 // mapping redux actions to the component
 const mapDispatchToProps = dispatch => {
     return {
-        setCryptoNewsAsync: () => dispatch(setCryptoNewsAsync())
+        setSportsNewsAsync: () => dispatch(setSportsNewsAsync())
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CryptoNewsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SportsNewsPage);
 

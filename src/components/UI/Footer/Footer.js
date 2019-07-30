@@ -1,5 +1,5 @@
 import React from 'react';
-import news_api_logo from '../assets/img/news-api-logo.png';
+import news_api_logo from '../../../assets/img/news-api-logo.png';
 
 const Footer = () => {
     return (
