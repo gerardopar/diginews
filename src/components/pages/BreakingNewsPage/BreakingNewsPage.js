@@ -1,85 +1,83 @@
+// importing modules
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setBreakingNewsAsync } from '../../../actions/news';
-//importing breaking news articles
+// importing components
 import Spinner from '../../UI/Spinner/Spinner';
 import ArticleLarge from '../../UI/Articles/ArticleLarge';
 import ArticleSmall from '../../UI/Articles/ArticleSmall';
 import ArticleXSmall from '../../UI/Articles/ArticleXSmall';
 
 class BreakingNewsPage extends Component {
-
-    constructor(props){
-        super(props);
-    }
-
-    async componentDidMount(){
+    async componentDidMount() {
         this.props.setBreakingNewsAsync();
     }
     
-    render(){
-        return(
+    render() {
+        return (
         <React.Fragment>
             {
                 this.props.news.breakingNews.length !== 0 
-                    ? <div className="layout">
-
+                    ? (
+                    <div className="layout">
                     <div className="page__article--wrap">
-                        
-                        {/* breaking news articles will be rendered below */}
-                        {/*large article*/}
                         {
-                            this.props.news.breakingNews.splice(0, 1).map((article, index) => {
-                                return(<ArticleLarge
-                                    key={index} 
-                                    {...article}
-                                    />);
-                            })
+                            this.props.news.breakingNews.splice(0, 1).map(article => (
+                            <ArticleLarge
+                              key={article.publishedAt} 
+                              {...article}
+                            />
+                            ))
                         }
-                        {/*smaller articles*/}
-                    <div className="page__box--two">
-                        {
-                            this.props.news.breakingNews.splice(0, 3).map((article, index) => {
-                                return(<ArticleSmall
-                                    key={index} 
-                                    {...article}
-                                    />);
-                            })
-                        }
+                        <div className="page__box--two">
+                            {
+                                this.props.news.breakingNews.splice(0, 3).map(article => (
+                                <ArticleSmall
+                                  key={article.publishedAt} 
+                                  {...article}
+                                />
+                                ))
+                            }
+                        </div>
                     </div>
+                <div className="page__article--wrap--two">
+                    {
+                        this.props.news.breakingNews.splice(0, 2).map(article => (
+                    <ArticleXSmall
+                      key={article.publishedAt} 
+                      {...article}
+                    />
+                    ))
+                    }
+                </div>
                     </div>
-                        {/*xsmaller article*/}
-                    <div className="page__article--wrap--two">
-                        {
-                            this.props.news.breakingNews.splice(0, 2).map((article, index) => {
-                                return(<ArticleXSmall
-                                    key={index} 
-                                    {...article}
-                                    />);
-                            })
-                        }
-                    </div>
-                </div> : <Spinner />
+                    ) : <Spinner />
             }
             
         </React.Fragment>
-        )
-    };
-};
-
-// mapping the redux state to the component
-const mapStateToProps = (state) => {
-    return {
-        news: state.news
-    };
-};
-
-// mapping redux actions to the component
-const mapDispatchToProps = dispatch => {
-    return {
-        setBreakingNewsAsync: () => dispatch(setBreakingNewsAsync())
+        );
     }
+}
+
+// # redux state
+const mapStateToProps = state => ({
+    news: state.news
+});
+
+// # redux actions
+const mapDispatchToProps = dispatch => ({
+    setBreakingNewsAsync: () => dispatch(setBreakingNewsAsync())
+});
+
+BreakingNewsPage.propTypes = {
+    news: PropTypes.arrayOf(PropTypes.any),
+    setBreakingNewsAsync: PropTypes.func
+};
+
+BreakingNewsPage.defaultProps = {
+    news: [],
+    setBreakingNewsAsync: () => {}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BreakingNewsPage);
-

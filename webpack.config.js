@@ -1,61 +1,61 @@
-//node path module declared here
-//this module helps us get our file path easier
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// * importing modules 
+const path = require('path'); // * absolute path
 
+// * importing plugins
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // * generates a css file
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // * minifies css
+const TerserPlugin = require('terser-webpack-plugin'); // * minifies javascript
 
-//declaring the entry & output points
-//for our javascript files
-module.exports = (env) =>  {
-    const isProduction = env === 'production';
-    const CSSExtract = new ExtractTextPlugin('styles.css');
+// * webpack mode
+const devMode = process.env.NODE_ENV !== 'production';
 
-
-    return {
-    //the file we will write our code in
-    entry: ['babel-polyfill', './src/app.js'],
-    //the bundle file we are targetting to output our code
+module.exports = {
+    entry: ['@babel/polyfill', './src/index.js'], // webpack entry point
     output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+        filename: 'bundle.js', // webpack output file
+        path: path.resolve(__dirname, 'public') // webpack output point / directory
     },
-    module: {
-        rules: [{
-            loader: 'babel-loader',
-            test: /\.js$/,
-            exclude: /node_modules/
-        },{
-            test: /\.s?css$/,
-            use: CSSExtract.extract({
-                use:  [
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true
-                    }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    }
+    module: { // # loaders
+        rules: [
+            { // # js loader 
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader', 'eslint-loader']
+            },
+            { // # styles loader
+                test: /\.scss$/, // tests for a sass file
+                use: [
+                    MiniCssExtractPlugin.loader, // compiles CSS into a seperate file
+                    { loader: 'css-loader' }, // translates CSS into CommonJS
+                    { loader: 'sass-loader' } // compiles Sass to CSS, using Node Sass by default
+                    ]
+            },
+            { // # file loader
+                test: /\.(png|svg|jpg|gif)$/, // tests for an img
+                use: [
+                    { loader: 'file-loader' }
                 ]
-            })
-        },
-        {
-            test: /\.(png|jpg|jpeg|svg)$/,
-            loader: 'file-loader',
-            include: path.join(__dirname, 'src')
-        }
-    ]},
-    plugins: [
-        CSSExtract
+            }
+        ]
+    },
+    optimization: { // # optimization
+        minimizer: [
+            new OptimizeCssAssetsPlugin(), // minifies css
+            new TerserPlugin() // minifies javascript
+        ]
+    },
+    plugins: [ // # plugins
+        new MiniCssExtractPlugin({ // generates a css file
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
     ],
-    devtool: isProduction ? 'source-map' : 'inline-source-map',
-    devServer: {
+    // # development
+    devServer: { // webpack development server
         contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true
-    } 
-    }
+        historyApiFallback: true,
+        open: 'Google Chrome'
+    },
+    devtool: 'source-map', // source maps for debugging
+    mode: devMode ? 'development' : 'production' // webpack mode
 };
