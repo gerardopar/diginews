@@ -1,16 +1,15 @@
-//default reducer state:
+// default reducer state:
 const newsDefaultstate = {
   breakingNews: [],
   cryptoNews: [],
   lifeNews: [],
   sportsNews: [],
   techNews: []
-}
+};
 
-//news reducer:
+// news reducer:
 const newsReducer = (state = newsDefaultstate, action) => {
     switch (action.type) {
-
       case 'SET_BREAKING_NEWS':
         return {
             ...state,
