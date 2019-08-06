@@ -1,7 +1,7 @@
 # digi news
 [View Project](http://digitalnews.s3-website-us-west-1.amazonaws.com/)
 
-[![news api logo](https://digitalnews.s3-us-west-1.amazonaws.com/readme-assets/news-logo.jpeg)]()
+[![news api logo](https://digitalnews.s3-us-west-1.amazonaws.com/readme-assets/news-logo.jpeg)](https://newsapi.org/)
 
 Digi News is a Single Page Web Application, that utilizes the News api in order to fetch real time news feeds. Powered by React and Redux.
 
