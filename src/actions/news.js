@@ -11,7 +11,6 @@ export const setBreakingNewsAsync = () => dispatch => fetch('https://newsapi.org
     })
     .then(data => data.json())
     .then((news) => {
-        console.log(news.articles);
         dispatch(setBreakingNews(news.articles)); 
     })
     .catch(err => console.log(err));
