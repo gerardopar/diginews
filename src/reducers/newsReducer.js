@@ -13,31 +13,31 @@ const newsReducer = (state = newsDefaultstate, action) => {
       case 'SET_BREAKING_NEWS':
         return {
             ...state,
-            breakingNews: [...action.breakingNews]
+            breakingNews: action.breakingNews
         };
 
       case 'SET_CRYPTO_NEWS':
         return {
             ...state,
-            cryptoNews: [...action.cryptoNews]
+            cryptoNews: action.cryptoNews
         };
 
       case 'SET_LIFE_NEWS':
         return {
             ...state,
-            lifeNews: [...action.lifeNews]
+            lifeNews: action.lifeNews
         };
 
       case 'SET_SPORTS_NEWS':
         return {
             ...state,
-            sportsNews: [...action.sportsNews]
+            sportsNews: action.sportsNews
         };
 
       case 'SET_TECH_NEWS':
         return {
             ...state,
-            techNews: [...action.techNews]
+            techNews: action.techNews
         };
 
       default:
