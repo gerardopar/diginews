@@ -1,9 +1,7 @@
 // # sync action
-export const setBreakingNews = news => ({
+export const setBreakingNews = (news = []) => ({
     type: 'SET_BREAKING_NEWS',
-    breakingNews: [
-        ...news
-    ]
+    breakingNews: [...news]
 });
 // # async action
 export const setBreakingNewsAsync = () => dispatch => fetch('https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=797ecd01a4354164974ef9414a36199d', {
@@ -16,7 +14,7 @@ export const setBreakingNewsAsync = () => dispatch => fetch('https://newsapi.org
     .catch(err => console.log(err));
 
 // # sync action
-export const setCryptoNews = news => ({
+export const setCryptoNews = (news = []) => ({
     type: 'SET_CRYPTO_NEWS',
     cryptoNews: [
         ...news
@@ -33,7 +31,7 @@ export const setCryptoNewsAsync = () => dispatch => fetch('https://newsapi.org/v
     .catch(err => console.log(err));
 
 // # sync action
-export const setLifeNews = news => ({ // set lifeNews via the async logic
+export const setLifeNews = (news = []) => ({ // set lifeNews via the async logic
     type: 'SET_LIFE_NEWS',
     lifeNews: [
         ...news
@@ -50,7 +48,7 @@ export const setLifeNewsAsync = () => dispatch => fetch('https://newsapi.org/v2/
     .catch(err => console.log(err));
 
 // # sync action
-export const setSportsNews = news => ({ // set sportsNews via the async logic
+export const setSportsNews = (news = []) => ({ // set sportsNews via the async logic
     type: 'SET_SPORTS_NEWS',
     sportsNews: [
         ...news
@@ -67,7 +65,7 @@ export const setSportsNewsAsync = () => dispatch => fetch('https://newsapi.org/v
     .catch(err => console.log(err));
 
 // # sync action
-export const setTechNews = news => ({ // set techNews via the async logic
+export const setTechNews = (news = []) => ({ // set techNews via the async logic
     type: 'SET_TECH_NEWS',
     techNews: [
         ...news
