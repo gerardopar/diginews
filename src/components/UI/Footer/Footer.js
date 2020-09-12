@@ -17,7 +17,7 @@ const Footer = () => (
                 </h5>
             </div>
             <div>
-                <h5 className="footer__title">2019&copy; digi news All Rights Reserved</h5>
+                <h5 className="footer__title">2020&copy; digi news All Rights Reserved</h5>
             </div>
         </div>
     </div>

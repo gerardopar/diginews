@@ -5,7 +5,8 @@ export const setBreakingNews = (news = []) => ({
 });
 // # async action
 export const setBreakingNewsAsync = () => dispatch => fetch('https://newsapi.org/v2/top-headlines?sources=cnn&apiKey=797ecd01a4354164974ef9414a36199d', {
-        method: 'GET'
+        method: 'GET',
+        'Access-Control-Allow-Origin': '*',
     })
     .then(data => data.json())
     .then((news) => {
@@ -22,7 +23,8 @@ export const setCryptoNews = (news = []) => ({
 });
 // # async action
 export const setCryptoNewsAsync = () => dispatch => fetch('https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=797ecd01a4354164974ef9414a36199d', {
-        method: 'GET'
+        method: 'GET',
+        'Access-Control-Allow-Origin': '*',
     })
     .then(data => data.json())
     .then((news) => {
@@ -39,7 +41,8 @@ export const setLifeNews = (news = []) => ({ // set lifeNews via the async logic
 });
 // # async action
 export const setLifeNewsAsync = () => dispatch => fetch('https://newsapi.org/v2/top-headlines?sources=time&apiKey=797ecd01a4354164974ef9414a36199d', {
-        method: 'GET'
+        method: 'GET',
+        'Access-Control-Allow-Origin': '*',
     })
     .then(data => data.json())
     .then((news) => {
@@ -56,7 +59,8 @@ export const setSportsNews = (news = []) => ({ // set sportsNews via the async l
 });
 // # async action
 export const setSportsNewsAsync = () => dispatch => fetch('https://newsapi.org/v2/top-headlines?sources=espn&apiKey=797ecd01a4354164974ef9414a36199d', {
-        method: 'GET'
+        method: 'GET',
+        'Access-Control-Allow-Origin': '*',
     })
     .then(data => data.json())
     .then((news) => {
@@ -73,7 +77,8 @@ export const setTechNews = (news = []) => ({ // set techNews via the async logic
 });
 // # async action
 export const setTechNewsAsync = () => dispatch => fetch('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=797ecd01a4354164974ef9414a36199d', {
-        method: 'GET'
+        method: 'GET',
+        'Access-Control-Allow-Origin': '*',
     })
     .then(data => data.json())
     .then((news) => {
