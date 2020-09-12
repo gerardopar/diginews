@@ -1,7 +1,10 @@
 import React from 'react';
 import newsApiLogo from '../../../assets/img/news-api-logo.png';
 
-const Footer = () => (
+const Footer = () => {
+    const date = new Date();
+    const currentYear = date.getFullYear();
+    return (
     <div>
         <div className="footer">
             <div className="footer__img--wrap">
@@ -17,10 +20,14 @@ const Footer = () => (
                 </h5>
             </div>
             <div>
-                <h5 className="footer__title">2020&copy; digi news All Rights Reserved</h5>
+                <h5 className="footer__title">
+                {currentYear}
+                &copy; digi news All Rights Reserved
+                </h5>
             </div>
         </div>
     </div>
-);
+    );
+};
 
 export default Footer;
