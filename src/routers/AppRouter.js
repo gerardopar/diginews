@@ -17,63 +17,23 @@ import TechNewsPage from '../components/pages/TechNewsPage/TechNewsPage';
 const AppRouter = () => {
         const routes = (
             <Switch>
-                <Route
-                  path="/"
-                  exact
-                  render={props => (
-                        <BreakingNewsPage
-                          {...props}
-                        />
-                )} 
-                />
-                <Route
-                  path="/crypto"
-                  exact
-                  render={props => (
-                        <CryptoNewsPage
-                          {...props}
-                        />
-                )} 
-                />
-                <Route
-                  path="/life"
-                  exact
-                  render={props => (
-                        <LifeNewsPage
-                          {...props}
-                        />
-                )} 
-                />
-                <Route
-                  path="/sports"
-                  exact
-                  render={props => (
-                        <SportsNewsPage
-                          {...props}
-                        />
-                )} 
-                />
-                <Route
-                  path="/tech"
-                  exact
-                  render={props => (
-                        <TechNewsPage 
-                          {...props}
-                        />
-                )} 
-                />
+                <Route path="/" component={BreakingNewsPage} exact />
+                <Route path="/crypto" component={CryptoNewsPage} exact />
+                <Route path="/life" component={LifeNewsPage} exact />
+                <Route path="/sports" component={SportsNewsPage} exact />
+                <Route path="/tech" component={TechNewsPage} exact />
                 <Redirect to="/" />
             </Switch>
         );
 
         return (
             <BrowserRouter>
-            <div>
+              <div>
                 <Header />
                 <SubHeader />
                 {routes}
                 <Footer />
-            </div>
+              </div>
             </BrowserRouter>
         );
 };
